@@ -42,11 +42,8 @@ jobs:
         run: scp -i ssh_key -o StrictHostKeyChecking=no * root@${{ secrets.SSH_HOST }}:/var/www/nodeServer
 
       - name: DO SSH
-        run: ssh -i ssh_key -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }}
-
-      - name: Change directory
-        run: cd /var/www/nodeServer
-
+        run: ssh -i ssh_key -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} -t "cd /var/www/nodeServer && npm start&"
+        
       - name: Start Server
         run: npm start&
 
