@@ -5,19 +5,18 @@ on:
     branches:
       - main
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a test.txt file
+        run: touch test.txt
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Create a test.txt file
-        - run: touch test.txt
+      - name: Completed file Creation
+        run: echo "Test file created"
 
-        - name: Completed file Creation
-        - run: echo "Test file created"
+      - name: Transferring File to server
+        run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} test.txt ${{ secrets.SSH_HOST }}:/home
 
-        - name: Transfering File to server
-        - run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} test.txt ${{ secrets.SSH_HOST }}:/home
-
-        -name: Copy File
-        - run: echo "file Copied"
+      - name: Copy File
+        run: echo "File copied"
