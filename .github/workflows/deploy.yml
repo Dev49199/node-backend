@@ -18,7 +18,7 @@ jobs:
         run: echo "Test file created"
 
       - name: Value of Github workspace
-        run: echo $GITHUB_WORKSPACE
+        run: echo $GITHUB_WORKSPACE/test.txt
 
       - name: List files in github workspace
         run: ls -la $GITHUB_WORKSPACE
