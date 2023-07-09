@@ -27,7 +27,7 @@ jobs:
         run: ls -la
 
       - name: Transfering File to server
-        run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} $GITHUB_WORKSPACE/test.txt ${{ secrets.SSH_HOST }}:/home
+        run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} "./test.txt" ${{ secrets.SSH_HOST }}:/home
       
       - name: Copy File
         run: echo "file Copied"
