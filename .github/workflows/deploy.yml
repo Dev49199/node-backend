@@ -17,6 +17,9 @@ jobs:
       - name: Completed file Creation
         run: echo "Test file created"
       
+      - name: List Files
+        run: ls -la
+        
       - name: Transfering File to server
         run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} ./test.txt ${{ secrets.SSH_HOST }}:/home
       
