@@ -40,9 +40,15 @@ jobs:
 
       - name: Transfering File to server
         run: scp -i ssh_key -o StrictHostKeyChecking=no * root@${{ secrets.SSH_HOST }}:/var/www/nodeServer
-      
-      - name: Copy File
-        run: echo "file Copied"
+
+      - name: DO SSH
+        run: ssh -i ssh_key -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }}
+
+      - name: Change directory
+        run: cd /var/www/nodeServer
 
       - name: Start Server
-        run: npm start
+        run: npm start&
+
+      - name: Server Started
+        run: echo "Started"
