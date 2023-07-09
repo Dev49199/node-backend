@@ -36,6 +36,7 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key
           chmod 600 ssh_key
+          echo "${{ secrets.SSH_HOST }}" > ssh_known_hosts
 
       - name: Transfering File to server
         run: scp -i ssh_key test.txt ${{ secrets.SSH_HOST }}:/home
