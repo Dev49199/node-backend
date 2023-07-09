@@ -31,10 +31,14 @@ jobs:
 
       - name: Cat file
         run: cat test.txt
-  
+      
+      - name: Set up SSH
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key
+          chmod 600 ssh_key
 
       - name: Transfering File to server
-        run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} test.txt root@${{ secrets.SSH_HOST }}:/home
+        run: scp -i ssh_key test.txt root@${{ secrets.SSH_HOST }}:/home
       
       - name: Copy File
         run: echo "file Copied"
