@@ -18,7 +18,7 @@ jobs:
         run: echo "Test file created"
       
       - name: Transfering File to server
-        run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} test.txt ${{ secrets.SSH_HOST }}:/home
+        run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} ./test.txt ${{ secrets.SSH_HOST }}:/home
       
       - name: Copy File
         run: echo "file Copied"
