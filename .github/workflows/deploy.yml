@@ -39,7 +39,7 @@ jobs:
           echo "${{ secrets.SSH_HOST }}" > ssh_known_hosts
 
       - name: Transfering File to server
-        run: scp -i ssh_key test.txt ${{ secrets.SSH_HOST }}:/home
+        run: scp -i ssh_key -o StrictHostKeyChecking=no test.txt ${{ secrets.SSH_HOST }}:/home
       
       - name: Copy File
         run: echo "file Copied"
