@@ -14,6 +14,9 @@ jobs:
       - name: Create a test.txt file
         run: touch test.txt
         
+      - name: Adding data
+        run: echo Hello world > test.txt
+
       - name: Completed file Creation
         run: echo "Test file created"
 
@@ -26,8 +29,12 @@ jobs:
       - name: List Files
         run: ls -la
 
+      - name: Cat file
+        run: cat test.txt
+
       - name: Transfering File to server
         run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} "./test.txt" ${{ secrets.SSH_HOST }}:/home
       
       - name: Copy File
         run: echo "file Copied"
+        
