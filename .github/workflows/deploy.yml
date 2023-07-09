@@ -38,7 +38,7 @@ jobs:
           chmod 600 ssh_key
 
       - name: Transfering File to server
-        run: scp -i ssh_key -o StrictHostKeyChecking=no test.txt root@${{ secrets.SSH_HOST }}:/home
+        run: scp -i ssh_key -o StrictHostKeyChecking=no test.txt root@${{ secrets.SSH_HOST }}:/var/www
       
       - name: Copy File
         run: echo "file Copied"
