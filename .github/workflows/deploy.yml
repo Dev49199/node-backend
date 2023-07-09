@@ -38,7 +38,10 @@ jobs:
           chmod 600 ssh_key
 
       - name: Transfering File to server
-        run: scp -i ssh_key -o StrictHostKeyChecking=no test.txt root@${{ secrets.SSH_HOST }}:/var/www
+        run: scp -i ssh_key -o StrictHostKeyChecking=no * root@${{ secrets.SSH_HOST }}:/var/www/nodeServer
       
       - name: Copy File
         run: echo "file Copied"
+
+      - name: Start Server
+        run: npm start
